@@ -1,0 +1,9 @@
+services:
+  - type: static
+    name: my-cool-app
+    env: static
+    staticPublishPath: build/
+    redirects:
+      - source: /*
+        destination: /index.html
+        status: 200
