@@ -36,6 +36,11 @@ app.use("/api/notification",notificationRoutes)
 
 app.use(express.static(path.join(__dirname,"/client/dist")))
 app.use("*",(req,res)=> res.sendFile(__dirname,"/client/dist/index.html"))
+app.use("/",(req,res)=>{
+    res.status(404).json({
+        message : "not found message"
+    })
+})
 
 app.listen(PORT,()=>{
     console.log("server is running on port number "+PORT)
