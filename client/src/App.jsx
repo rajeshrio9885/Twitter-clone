@@ -12,7 +12,15 @@ import { useQuery } from '@tanstack/react-query'
 import { baseUrl } from './constant/url'
 import LoadingSpinner from './components/common/LoadingSpinner'
 import Downbar from './components/common/Downbar'
+import {useNavigate,useLocation} from "react-router-dom"
 const App = () => {
+  const navigate = useNavigate()
+	const location = useLocation()
+	useEffect(()=>{
+		if(location.pathname !== "/")
+		navigate("/")
+	},[location,navigate])
+
   const {data : authUser ,isLoading} = useQuery({
     queryKey : ["authUser"],
     queryFn : async()=>{
