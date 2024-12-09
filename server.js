@@ -21,7 +21,7 @@ const postRoutes = require("./routes/postRoutes")
 const notificationRoutes = require("./routes/notificationRoutes")
 
 app.use(express.static(path.join(__dirname,"/client/dist")))
-app.get("*",(req,res)=> res.sendFile(__dirname,"/client/dist/index.html"))
+app.use("*",(req,res)=> res.sendFile(__dirname,"/client/dist/index.html"))
 app.use(cors())
 app.use(express.urlencoded({
     extended : true
