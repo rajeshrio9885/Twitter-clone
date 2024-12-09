@@ -20,8 +20,6 @@ const cookieParser = require('cookie-parser')
 const postRoutes = require("./routes/postRoutes")
 const notificationRoutes = require("./routes/notificationRoutes")
 
-app.use(express.static(path.join(__dirname,"/client/dist")))
-app.use("*",(req,res)=> res.sendFile(__dirname,"/client/dist/index.html"))
 app.use(cors())
 app.use(express.urlencoded({
     extended : true
@@ -34,6 +32,10 @@ app.use("/api/auth",router)
 app.use("/api/user",userRoutes)
 app.use("/api/post",postRoutes)
 app.use("/api/notification",notificationRoutes)
+
+
+app.use(express.static(path.join(__dirname,"/client/dist")))
+app.use("*",(req,res)=> res.sendFile(__dirname,"/client/dist/index.html"))
 
 app.listen(PORT,()=>{
     console.log("server is running on port number "+PORT)
