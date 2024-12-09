@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Routes,Route, useNavigate, Navigate } from 'react-router-dom'
+import { Routes,Route, useNavigate, Navigate,useLocation } from 'react-router-dom'
 import SignUpPage from './pages/auth/signup/SignUpPage'
 import LoginPage from './pages/auth/login/LoginPage'
 import HomePage from './pages/home/HomePage'
@@ -12,7 +12,6 @@ import { useQuery } from '@tanstack/react-query'
 import { baseUrl } from './constant/url'
 import LoadingSpinner from './components/common/LoadingSpinner'
 import Downbar from './components/common/Downbar'
-import {useNavigate,useLocation} from "react-router-dom"
 const App = () => {
   const navigate = useNavigate()
 	const location = useLocation()
