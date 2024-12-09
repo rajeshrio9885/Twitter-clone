@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Routes,Route, useNavigate, Navigate,useLocation } from 'react-router-dom'
+import { Routes,Route, Navigate } from 'react-router-dom'
 import SignUpPage from './pages/auth/signup/SignUpPage'
 import LoginPage from './pages/auth/login/LoginPage'
 import HomePage from './pages/home/HomePage'
@@ -13,12 +13,7 @@ import { baseUrl } from './constant/url'
 import LoadingSpinner from './components/common/LoadingSpinner'
 import Downbar from './components/common/Downbar'
 const App = () => {
-  const navigate = useNavigate()
-	const location = useLocation()
-	useEffect(()=>{
-		if(location.pathname !== "/")
-		navigate("/")
-	},[location,navigate])
+
 
   const {data : authUser ,isLoading} = useQuery({
     queryKey : ["authUser"],

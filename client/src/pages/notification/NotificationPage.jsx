@@ -8,16 +8,7 @@ import { FaHeart } from "react-icons/fa6";
 import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query"
 import { FaRegCommentDots } from "react-icons/fa";
 import {toast} from "react-hot-toast"
-import { useEffect } from "react";
-import {useNavigate,useLocation} from "react-router-dom"
 const NotificationPage = () => {
-	const navigate = useNavigate()
-	const location = useLocation()
-	useEffect(()=>{
-		if(location.pathname !== "/")
-		navigate("/")
-	},[location,navigate])
-
 	const {data:notifications,isLoading} = useQuery({
 		queryKey : ["notification"],
 		queryFn : async()=>{
