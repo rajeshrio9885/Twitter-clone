@@ -22,10 +22,7 @@ const notificationRoutes = require("./routes/notificationRoutes")
 
 app.use(express.static(path.join(__dirname,"/client/dist")))
 app.get("*",(req,res)=> res.sendFile(__dirname,"/client/dist/index.html"))
-app.use(cors({
-    origin : "http://localhost:5173",
-    credentials : true
-}))
+app.use(cors())
 app.use(express.urlencoded({
     extended : true
 }))
