@@ -34,8 +34,9 @@ app.use("/api/post",postRoutes)
 app.use("/api/notification",notificationRoutes)
 
 
+
 app.use(express.static(path.join(__dirname,"/client/dist")))
-app.use("*",(req,res)=> res.sendFile(__dirname,"/client/dist/index.html"))
+app.get("*",(req,res)=> res.sendFile(__dirname,"/client/dist/index.html"))
 
 
 app.listen(PORT,()=>{
