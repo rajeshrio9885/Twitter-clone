@@ -6,6 +6,7 @@ const cors = require("cors")
 const app = express()
 const path = require("path")
 const dotenv = require('dotenv')
+const _dirname = path.resolve()
 dotenv.config({path:path.join(__dirname,".env")})
 cloudinary.config({
     cloud_name : process.env.CLOUDINARY_CloudName,
@@ -33,10 +34,15 @@ app.use("/api/user",userRoutes)
 app.use("/api/post",postRoutes)
 app.use("/api/notification",notificationRoutes)
 
+if(process.env.NODE_ENV === "production"){
+    app.use(express.static(path.join(_dirname,"/client/dist")))
+    app.get("*",(req,res)=>{
+        res.sendFile(path.resolve(_dirname,"client","dist","index.html"))
+    })
+}
 
-
-app.use(express.static(path.join(__dirname,"/client/dist")))
-app.get("*",(req,res)=> res.sendFile(__dirname,"/client/dist/index.html"))
+// app.use(express.static(path.join(__dirname,"/client/dist")))
+// app.get("*",(req,res)=> res.sendFile(__dirname,"/client/dist/index.html"))
 
 
 app.listen(PORT,()=>{
